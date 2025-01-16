@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 import json
+from pop import delete_accessory
+import pop
+import os
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a strong secret key for session management
@@ -63,10 +66,12 @@ def logout():
     session.pop('user', None)
     return redirect(url_for('home'))
 
+
 @app.route('/view_stock')
 def view_stock():
     if 'user' in session:
-        accessories = read_accessories_from_file('pop.txt')
+        accessories =read_accessories_from_file('pop.txt')
+        print(accessories)  # Debugging: Print the accessories list
         return render_template('view_stock.html', accessories=accessories)
     return redirect(url_for('login'))
 
@@ -94,23 +99,6 @@ def buy_selected():
     
     # Render the confirmation page or redirect as needed
     return render_template('buy_now.html', quantities=quantities)
-@app.route('/delete_items')
-def delete_items():
-    if 'user' in session and session['user'] == 'admin':
-        return render_template('delete_items.html')
-    return redirect(url_for('login'))
-
-@app.route('/add_items')
-def add_items():
-    if 'user' in session and session['user'] == 'admin':
-        return render_template('add_items.html')
-    return redirect(url_for('login'))
-
-@app.route('/update_price')
-def update_price():
-    if 'user' in session and session['user'] == 'admin':
-        return render_template('update_price.html')
-    return redirect(url_for('login'))
 
 @app.route('/view_report')
 def view_report():
@@ -149,6 +137,46 @@ def buy_now(item_code):
     
     # Ensure item is passed to the template here
     return render_template('buy_now.html', item=item)
+
+@app.route('/add_items', methods=['GET', 'POST'])
+def add_items():
+    if 'user' in session and session['user'] == 'admin':
+        if request.method == 'POST':
+            name = request.form['name']
+            code = request.form['code']
+            description = request.form['description']
+            remaining_items = int(request.form['remaining_items'])
+            price_excl_vat = float(request.form['price_excl_vat'])
+            pop.add_accessory(name, code, description, remaining_items, price_excl_vat)
+            flash("Accessory added successfully!", "success")
+            return redirect(url_for('view_stock'))
+        return render_template('add_items.html')
+    return redirect(url_for('login'))
+
+
+@app.route('/delete_item', methods=['GET', 'POST'])
+def delete_item():
+    print("Rendering delete_item.html")
+    if request.method == 'POST':
+        code = request.form.get('code')
+        print(f"Deleting accessory with code: {code}")
+        delete_accessory(code)  # Call the delete function
+        
+        return redirect(url_for('delete_item'))
+    return render_template('delete_item.html')
+
+
+@app.route('/update_price/<code>', methods=['GET', 'POST'])
+def update_price(code):
+    if 'user' in session and session['user'] == 'admin':
+        if request.method == 'POST':
+            new_price = float(request.form['price_excl_vat'])
+            pop.update_price(code, new_price)
+            flash("Price updated successfully!", "success")
+            return redirect(url_for('view_stock'))
+        accessory = next((acc for acc in pop.read_accessories_from_file() if acc['code'] == code), None)
+        return render_template('update_price.html', accessory=accessory)
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)

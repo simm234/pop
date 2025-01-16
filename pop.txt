@@ -3,7 +3,7 @@
         "name": "Car Cover",
         "code": "A001",
         "description": "Protective cover for cars.",
-        "remaining_items": 50,
+        "remaining_items": 200,
         "price_excl_vat": 50.0,
         "price_incl_vat": 57.5
     },
@@ -11,7 +11,7 @@
         "name": "Seat Covers",
         "code": "A002",
         "description": "Comfortable seat covers for all models.",
-        "remaining_items": 100,
+        "remaining_items": 150,
         "price_excl_vat": 30.0,
         "price_incl_vat": 34.5
     },
@@ -27,7 +27,7 @@
         "name": "Floor Mats",
         "code": "A004",
         "description": "Durable floor mats for cleanliness.",
-        "remaining_items": 50,
+        "remaining_items": 450,
         "price_excl_vat": 25.0,
         "price_incl_vat": 28.75
     },
@@ -59,7 +59,7 @@
         "name": "Phone Holder",
         "code": "A008",
         "description": "Adjustable phone holder for dashboard.",
-        "remaining_items": 30,
+        "remaining_items": 530,
         "price_excl_vat": 10.0,
         "price_incl_vat": 11.5
     },
@@ -116,8 +116,8 @@
         "code": "A015",
         "description": "Complete car cleaning kit.",
         "remaining_items": 20,
-        "price_excl_vat": 25.0,
-        "price_incl_vat": 28.75
+        "price_excl_vat": 325.0,
+        "price_incl_vat": 373.75
     },
     {
         "name": "Wheel Covers",
@@ -172,8 +172,8 @@
         "code": "A022",
         "description": "High-performance brake pads.",
         "remaining_items": 10,
-        "price_excl_vat": 45.0,
-        "price_incl_vat": 51.75
+        "price_excl_vat": 445.0,
+        "price_incl_vat": 511.75
     },
     {
         "name": "Car Jack",
@@ -203,7 +203,7 @@
         "name": "Fuel Additive",
         "code": "A026",
         "description": "Engine performance fuel additive.",
-        "remaining_items": 30,
+        "remaining_items": 360,
         "price_excl_vat": 15.0,
         "price_incl_vat": 17.25
     },
@@ -267,7 +267,7 @@
         "name": "Anti-slip Mat",
         "code": "A034",
         "description": "Dashboard anti-slip mat.",
-        "remaining_items": 100,
+        "remaining_items": 150,
         "price_excl_vat": 6.0,
         "price_incl_vat": 6.9
     },
