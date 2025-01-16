@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Search Results for "{{ query }}"</h2>
+    {% if accessories %}
+        <ul>
+            {% for accessory in accessories %}
+                <li>
+                    <strong>{{ accessory['name'] }}</strong><br>
+                    {{ accessory['description'] }}<br>
+                    Price: ${{ accessory['price_incl_vat'] }}<br>
+                    <a href="{{ url_for('buy_now', item_code=accessory['code']) }}">
+                        <button>Buy Now</button>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No items found.</p>
+    {% endif %}
+{% endblock %}

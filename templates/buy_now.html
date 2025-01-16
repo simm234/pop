@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Buy Now: {{ item['name'] }}</h2>
+    <p>{{ item['description'] }}</p>
+    <p>Price: ${{ item['price_incl_vat'] }}</p>
+    <form action="{{ url_for('buy_now', item_code=item['code']) }}" method="POST">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="{{ item['remaining_items'] }}" value="1" required>
+        <button type="submit">Confirm Purchase</button>
+    </form>
+{% endblock %}

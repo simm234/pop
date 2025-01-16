@@ -85,7 +85,10 @@ section {
     cursor: pointer;
     
 }
-
+.search-bar{
+    width:50%;
+    margin-left: 365px;
+}
 .user-nav .search-bar button:hover {
     background-color: darkblue;
 }

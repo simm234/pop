@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Order Summary</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Price (Excl. VAT)</th>
+            <th>Price (Incl. VAT)</th>
+        </tr>
+        {% for accessory in accessories %}
+        <tr>
+            <td>{{ accessory.name }}</td>
+            <td>{{ accessory.price_excl_vat }}</td>
+            <td>{{ accessory.price_incl_vat }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Total Price (Excl. VAT): {{ total_excl_vat }}</h2>
+    <h2>Total Price (Incl. VAT): {{ total_incl_vat }}</h2>
+{% endblock %}

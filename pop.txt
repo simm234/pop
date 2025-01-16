@@ -1,0 +1,402 @@
+[
+    {
+        "name": "Car Cover",
+        "code": "A001",
+        "description": "Protective cover for cars.",
+        "remaining_items": 50,
+        "price_excl_vat": 50.0,
+        "price_incl_vat": 57.5
+    },
+    {
+        "name": "Seat Covers",
+        "code": "A002",
+        "description": "Comfortable seat covers for all models.",
+        "remaining_items": 100,
+        "price_excl_vat": 30.0,
+        "price_incl_vat": 34.5
+    },
+    {
+        "name": "Steering Wheel Cover",
+        "code": "A003",
+        "description": "Grip-friendly steering wheel cover.",
+        "remaining_items": 100,
+        "price_excl_vat": 15.0,
+        "price_incl_vat": 17.25
+    },
+    {
+        "name": "Floor Mats",
+        "code": "A004",
+        "description": "Durable floor mats for cleanliness.",
+        "remaining_items": 50,
+        "price_excl_vat": 25.0,
+        "price_incl_vat": 28.75
+    },
+    {
+        "name": "Car Vacuum Cleaner",
+        "code": "A005",
+        "description": "Compact vacuum cleaner for cars.",
+        "remaining_items": 80,
+        "price_excl_vat": 40.0,
+        "price_incl_vat": 46.0
+    },
+    {
+        "name": "Air Freshener",
+        "code": "A006",
+        "description": "Long-lasting car air freshener.",
+        "remaining_items": 70,
+        "price_excl_vat": 5.0,
+        "price_incl_vat": 5.75
+    },
+    {
+        "name": "Sunshade",
+        "code": "A007",
+        "description": "Foldable sunshade for windshield.",
+        "remaining_items": 20,
+        "price_excl_vat": 20.0,
+        "price_incl_vat": 23.0
+    },
+    {
+        "name": "Phone Holder",
+        "code": "A008",
+        "description": "Adjustable phone holder for dashboard.",
+        "remaining_items": 30,
+        "price_excl_vat": 10.0,
+        "price_incl_vat": 11.5
+    },
+    {
+        "name": "Jump Starter",
+        "code": "A009",
+        "description": "Portable car jump starter.",
+        "remaining_items": 60,
+        "price_excl_vat": 70.0,
+        "price_incl_vat": 80.5
+    },
+    {
+        "name": "Car Battery Charger",
+        "code": "A010",
+        "description": "Efficient car battery charger.",
+        "remaining_items": 90,
+        "price_excl_vat": 60.0,
+        "price_incl_vat": 69.0
+    },
+    {
+        "name": "LED Headlights",
+        "code": "A011",
+        "description": "Bright and energy-efficient headlights.",
+        "remaining_items": 75,
+        "price_excl_vat": 80.0,
+        "price_incl_vat": 92.0
+    },
+    {
+        "name": "Tire Inflator",
+        "code": "A012",
+        "description": "Portable tire inflator pump.",
+        "remaining_items": 90,
+        "price_excl_vat": 35.0,
+        "price_incl_vat": 40.25
+    },
+    {
+        "name": "Dash Cam",
+        "code": "A013",
+        "description": "High-definition dash camera.",
+        "remaining_items": 45,
+        "price_excl_vat": 100.0,
+        "price_incl_vat": 115.0
+    },
+    {
+        "name": "Roof Rack",
+        "code": "A014",
+        "description": "Strong roof rack for luggage.",
+        "remaining_items": 30,
+        "price_excl_vat": 150.0,
+        "price_incl_vat": 172.5
+    },
+    {
+        "name": "Car Wash Kit",
+        "code": "A015",
+        "description": "Complete car cleaning kit.",
+        "remaining_items": 20,
+        "price_excl_vat": 25.0,
+        "price_incl_vat": 28.75
+    },
+    {
+        "name": "Wheel Covers",
+        "code": "A016",
+        "description": "Stylish wheel covers for all sizes.",
+        "remaining_items": 90,
+        "price_excl_vat": 50.0,
+        "price_incl_vat": 57.5
+    },
+    {
+        "name": "Backup Camera",
+        "code": "A017",
+        "description": "Rearview backup camera system.",
+        "remaining_items": 70,
+        "price_excl_vat": 120.0,
+        "price_incl_vat": 138.0
+    },
+    {
+        "name": "Tow Rope",
+        "code": "A018",
+        "description": "Heavy-duty tow rope.",
+        "remaining_items": 25,
+        "price_excl_vat": 30.0,
+        "price_incl_vat": 34.5
+    },
+    {
+        "name": "Car Organizer",
+        "code": "A019",
+        "description": "Multi-pocket car organizer.",
+        "remaining_items": 35,
+        "price_excl_vat": 15.0,
+        "price_incl_vat": 17.25
+    },
+    {
+        "name": "GPS Tracker",
+        "code": "A020",
+        "description": "Real-time GPS tracking device.",
+        "remaining_items": 60,
+        "price_excl_vat": 90.0,
+        "price_incl_vat": 103.5
+    },
+    {
+        "name": "Car Polisher",
+        "code": "A021",
+        "description": "Electric car polishing machine.",
+        "remaining_items": 40,
+        "price_excl_vat": 110.0,
+        "price_incl_vat": 126.5
+    },
+    {
+        "name": "Brake Pads",
+        "code": "A022",
+        "description": "High-performance brake pads.",
+        "remaining_items": 10,
+        "price_excl_vat": 45.0,
+        "price_incl_vat": 51.75
+    },
+    {
+        "name": "Car Jack",
+        "code": "A023",
+        "description": "Hydraulic car jack.",
+        "remaining_items": 80,
+        "price_excl_vat": 55.0,
+        "price_incl_vat": 63.25
+    },
+    {
+        "name": "Oil Filter",
+        "code": "A024",
+        "description": "Durable oil filter.",
+        "remaining_items": 20,
+        "price_excl_vat": 20.0,
+        "price_incl_vat": 23.0
+    },
+    {
+        "name": "Spark Plugs",
+        "code": "A025",
+        "description": "Efficient spark plugs.",
+        "remaining_items": 40,
+        "price_excl_vat": 10.0,
+        "price_incl_vat": 11.5
+    },
+    {
+        "name": "Fuel Additive",
+        "code": "A026",
+        "description": "Engine performance fuel additive.",
+        "remaining_items": 30,
+        "price_excl_vat": 15.0,
+        "price_incl_vat": 17.25
+    },
+    {
+        "name": "Windshield Wipers",
+        "code": "A027",
+        "description": "All-weather windshield wipers.",
+        "remaining_items": 50,
+        "price_excl_vat": 25.0,
+        "price_incl_vat": 28.75
+    },
+    {
+        "name": "Car Battery",
+        "code": "A028",
+        "description": "Long-lasting car battery.",
+        "remaining_items": 50,
+        "price_excl_vat": 200.0,
+        "price_incl_vat": 230.0
+    },
+    {
+        "name": "Exhaust Tip",
+        "code": "A029",
+        "description": "Stylish exhaust tip.",
+        "remaining_items": 20,
+        "price_excl_vat": 35.0,
+        "price_incl_vat": 40.25
+    },
+    {
+        "name": "Car Cover Lock",
+        "code": "A030",
+        "description": "Anti-theft car cover lock.",
+        "remaining_items": 50,
+        "price_excl_vat": 12.0,
+        "price_incl_vat": 13.8
+    },
+    {
+        "name": "Seat Belt Cushion",
+        "code": "A031",
+        "description": "Comfortable seat belt cushion.",
+        "remaining_items": 60,
+        "price_excl_vat": 8.0,
+        "price_incl_vat": 9.2
+    },
+    {
+        "name": "Rearview Mirror",
+        "code": "A032",
+        "description": "Wide-angle rearview mirror.",
+        "remaining_items": 100,
+        "price_excl_vat": 18.0,
+        "price_incl_vat": 20.7
+    },
+    {
+        "name": "License Plate Frame",
+        "code": "A033",
+        "description": "Stylish license plate frame.",
+        "remaining_items": 90,
+        "price_excl_vat": 10.0,
+        "price_incl_vat": 11.5
+    },
+    {
+        "name": "Anti-slip Mat",
+        "code": "A034",
+        "description": "Dashboard anti-slip mat.",
+        "remaining_items": 100,
+        "price_excl_vat": 6.0,
+        "price_incl_vat": 6.9
+    },
+    {
+        "name": "Car Alarm System",
+        "code": "A035",
+        "description": "Advanced car alarm system.",
+        "remaining_items": 30,
+        "price_excl_vat": 250.0,
+        "price_incl_vat": 287.5
+    },
+    {
+        "name": "Tire Pressure Monitor",
+        "code": "A036",
+        "description": "Real-time tire pressure monitor.",
+        "remaining_items": 50,
+        "price_excl_vat": 75.0,
+        "price_incl_vat": 86.25
+    },
+    {
+        "name": "Car Cleaning Gel",
+        "code": "A037",
+        "description": "Reusable car cleaning gel.",
+        "remaining_items": 100,
+        "price_excl_vat": 5.0,
+        "price_incl_vat": 5.75
+    },
+    {
+        "name": "Keyless Entry System",
+        "code": "A038",
+        "description": "Smart keyless entry system.",
+        "remaining_items": 20,
+        "price_excl_vat": 300.0,
+        "price_incl_vat": 345.0
+    },
+    {
+        "name": "Side Window Deflectors",
+        "code": "A039",
+        "description": "Rain guard side window deflectors.",
+        "remaining_items": 100,
+        "price_excl_vat": 40.0,
+        "price_incl_vat": 46.0
+    },
+    {
+        "name": "Underbody Coating",
+        "code": "A040",
+        "description": "Protective underbody coating.",
+        "remaining_items": 70,
+        "price_excl_vat": 100.0,
+        "price_incl_vat": 115.0
+    },
+    {
+        "name": "Car Paint Pen",
+        "code": "A041",
+        "description": "Scratch repair car paint pen.",
+        "remaining_items": 400,
+        "price_excl_vat": 12.0,
+        "price_incl_vat": 13.8
+    },
+    {
+        "name": "Portable Fridge",
+        "code": "A042",
+        "description": "Compact portable fridge for cars.",
+        "remaining_items": 50,
+        "price_excl_vat": 250.0,
+        "price_incl_vat": 287.5
+    },
+    {
+        "name": "Car Bluetooth Adapter",
+        "code": "A043",
+        "description": "Wireless car Bluetooth adapter.",
+        "remaining_items": 30,
+        "price_excl_vat": 20.0,
+        "price_incl_vat": 23.0
+    },
+    {
+        "name": "Headrest Pillow",
+        "code": "A044",
+        "description": "Ergonomic headrest pillow.",
+        "remaining_items": 25,
+        "price_excl_vat": 15.0,
+        "price_incl_vat": 17.25
+    },
+    {
+        "name": "Cup Holder Organizer",
+        "code": "A045",
+        "description": "Multi-functional cup holder organizer.",
+        "remaining_items": 50,
+        "price_excl_vat": 10.0,
+        "price_incl_vat": 11.5
+    },
+    {
+        "name": "Emergency Kit",
+        "code": "A046",
+        "description": "Complete car emergency kit.",
+        "remaining_items": 60,
+        "price_excl_vat": 80.0,
+        "price_incl_vat": 92.0
+    },
+    {
+        "name": "Car Wax",
+        "code": "A047",
+        "description": "Premium car wax for shine.",
+        "remaining_items": 15,
+        "price_excl_vat": 20.0,
+        "price_incl_vat": 23.0
+    },
+    {
+        "name": "Fog Lights",
+        "code": "A048",
+        "description": "Bright fog lights for safety.",
+        "remaining_items": 60,
+        "price_excl_vat": 70.0,
+        "price_incl_vat": 80.5
+    },
+    {
+        "name": "Cargo Net",
+        "code": "A049",
+        "description": "Stretchable cargo net for trunks.",
+        "remaining_items": 55,
+        "price_excl_vat": 25.0,
+        "price_incl_vat": 28.75
+    },
+    {
+        "name": "Roof Box",
+        "code": "A050",
+        "description": "Spacious roof box for storage.",
+        "remaining_items": 3,
+        "price_excl_vat": 500.0,
+        "price_incl_vat": 575.0
+    }
+]

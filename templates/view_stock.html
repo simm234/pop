@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Available Stock</h1>
+    <form action="/buy_selected" method="POST">
+        <table border="1">
+            <tr>
+                <th>Select</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Code</th>
+                <th>Price (Excl. VAT)</th>
+                <th>Price (Incl. VAT)</th>
+                <th>Remaining Items</th>
+                <th>Quantity</th>  <!-- Added column for quantity selection -->
+            </tr>
+            {% for accessory in accessories %}
+            <tr>
+                <td><input type="checkbox" name="selected_items" value="{{ accessory.code }}"></td>
+                <td>{{ accessory.name }}</td>
+                <td>{{ accessory.description }}</td>
+                <td>{{ accessory.code }}</td>
+                <td>{{ accessory.price_excl_vat }}</td>
+                <td>{{ accessory.price_incl_vat }}</td>
+                <td>{{ accessory.remaining_items }}</td>
+                <td>
+                    <input type="number" name="quantity_{{ accessory.code }}" 
+                           min="1" max="{{ accessory.remaining_items }}" 
+                           value="1">  <!-- Input field for selecting quantity -->
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+        <!-- Buy Selected Items Button -->
+        <button type="submit" style="position: absolute; bottom: 20px; left: 20px;">Buy Selected Items</button>
+    </form>
+{% endblock %}

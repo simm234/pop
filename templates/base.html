@@ -9,31 +9,43 @@
 <body>
     <header>
         <h1>Car Parts Shop</h1>
-        
-                <nav class="{% if session['user'] == 'guest' %}user-nav{% elif session['user'] == 'admin' %}admin-nav{% endif %}">
-                    {% if 'user' in session %}
-                        {% if session['user'] == 'guest' %}
-                            <a href="/view_stock">View Stock</a>
-                            <form action="/search" method="get" class="search-bar">
-                                <input type="text" name="query" placeholder="Search...">
-                                <button type="submit">Search</button>
-                            </form>
-                        {% elif session['user'] == 'admin' %}
-                            <a href="/view_stock">View Stock</a>
-                            <a href="/selled_items">Selled Items</a>
-                            <a href="/delete_items">Delete Items</a>
-                            <a href="/add_items">Add Items</a>
-                            <a href="/update_price">Update Price</a>
-                            <a href="/view_report">View Report</a>
-                        {% endif %}
-                        <a href="/logout">Logout</a>
-                    {% else %}
-                        <a href="/login">Login</a>
-                    {% endif %}
-                </nav>
-            </header>
-            <main>
-                {% block content %}{% endblock %}
-            </main>
+        {% if 'user' in session %}
+        <nav>
+            {% if session['user'] == 'guest' %}
+                <a href="/view_stock">View Stock</a>
+                <form action="/search" method="get" class="search-bar">
+                    <input type="text" name="query" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </form>
+            {% elif session['user'] == 'admin' %}
+                <a href="/view_stock">View Stock</a>
+                <a href="/selled_items">Selled Items</a>
+                <a href="/delete_items">Delete Items</a>
+                <a href="/add_items">Add Items</a>
+                <a href="/update_price">Update Price</a>
+                <a href="/view_report">View Report</a>
+            {% endif %}
+            <a href="/logout">Logout</a>
+        </nav>
+        {% else %}
+        <nav>
+            <a href="/login">Login</a>
+        </nav>
+        {% endif %}
+
+        <!-- Display flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 </body>
 </html>
