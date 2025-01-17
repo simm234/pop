@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Purchase Confirmation</h1>
+    <p>Thank you for your purchase!</p>
+
+    {% for item in selled_items %}
+        <h2>Item Details:</h2>
+        <p><strong>Item:</strong> {{ item['name'] }}</p>
+        <p><strong>Quantity:</strong> {{ item['quantity'] }}</p>
+        <p><strong>Total Price:</strong> ${{ item['total_price'] }}</p>
+    {% endfor %}
+
+    <h3>Total Price for All Selected Items: ${{ total_price }}</h3>
+
+    <nav>
+        <a href="{{ url_for('view_stock') }}">View Stock</a> |
+        <a href="{{ url_for('home') }}">Home</a>
+    </nav>
+{% endblock %}

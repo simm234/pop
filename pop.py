@@ -90,34 +90,45 @@ car_accessories = [
 ]
 
 
+def read_accessories_from_file(filename):
+    if not os.path.exists(filename):
+        return []  # Return empty list if file does not exist
+    
+    with open(filename, 'r') as file:
+        try:
+            data_dicts = json.load(file)
+            data = [CarAccessory(
+                name=item['name'], 
+                code=item['code'], 
+                description=item['description'], 
+                remaining_items=item['remaining_items'],
+                price_excl_vat=item['price_excl_vat']
+            ) for item in data_dicts]
+        except json.JSONDecodeError:
+            return []  # Return empty list if JSON decoding fails (e.g., empty file)
+    return data
 
-def write_accessories_to_file(filename, accessories):
-    print(f"Writing to file {filename} with {len(accessories)} accessories.")  # Debugging
+def write_accessories_to_file(filename, data):
     try:
+        data_dicts = [item.to_dict() for item in data]
         with open(filename, 'w') as file:
-            json.dump([acc.to_dict() for acc in accessories], file, indent=4)
-        print("Write operation completed. Data written:")
-        print([acc.to_dict() for acc in accessories])  # Debugging
+            json.dump(data_dicts, file, indent=4)
     except Exception as e:
         print(f"Error writing to file: {e}")
 
-       
 
-def read_accessories_from_file(filename):
-    try:
-        with open(filename, 'r') as file:
-            content = file.read()
-            if content.strip() == "":  # Return an empty list if the file is empty
-                return []
-            data = json.loads(content)  # Load the JSON data
-            # Return a list of CarAccessory instances, not dictionaries
-            return [CarAccessory.from_dict(item) for item in data]
-    except json.JSONDecodeError:
-        print("Error: JSON file is not properly formatted.")
-        return []  # Return an empty list if JSON is invalid
-    except FileNotFoundError:
-        print("Error: File does not exist.")
-        return []  # Return an empty list if the file is not found
+def add_accessory(name, code, description, remaining_items, price_excl_vat, filename):
+    accessories = read_accessories_from_file(filename)
+    new_accessory = CarAccessory(name, code, description, remaining_items, price_excl_vat)
+    accessories.append(new_accessory)
+    write_accessories_to_file(filename, accessories)
+    print(f"Added accessory: {new_accessory.to_dict()}")
+# File to store accessories
+filename = "pop.txt"
+
+
+
+
 
 
 # File to store accessories
@@ -140,13 +151,22 @@ def delete_accessory(code):
     write_accessories_to_file(filename, accessories)
 
 
-def add_accessory(name, code, description, remaining_items, price_excl_vat):
-    accessories = read_accessories_from_file(filename)
-    print(f"Accessories before adding: {len(accessories)}")  # Debugging
-    new_accessory = CarAccessory(name, code, description, remaining_items, price_excl_vat)
-    accessories.append(new_accessory)
-    write_accessories_to_file(filename, accessories)
-    print(f"Accessory {name} added successfully.")  # Debugging
+# Read car accessories from pop.txt
+def load_car_accessories(filename):
+    if os.path.exists(filename):
+        with open(filename, 'r') as file:
+            data = json.load(file)
+            return [CarAccessory.from_dict(item) for item in data]
+    else:
+        print("File not found!")
+        return []
+
+# Load car accessories from pop.txt
+car_accessories = load_car_accessories("pop.txt")
+
+# You can now access car_accessories, which is a list of CarAccessory objects
+for accessory in car_accessories:
+    print(accessory.to_dict()) 
 
 # Test read functionality
 if __name__ == "__main__":

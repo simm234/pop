@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Selled Items</h1>
+
+    <ul>
+        {% for item in selled_items %}
+            <li>
+                <h2>{{ item['name'] }}</h2>
+                <p>Code: {{ item['code'] }}</p>
+                <p>Quantity Sold: {{ item['quantity'] }}</p>
+                <p>Price (Incl. VAT): ${{ item['price_incl_vat'] }}</p>
+                <p>Total Price: ${{ item['total_price'] }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <nav>
+        <a href="{{ url_for('view_stock') }}">View Stock</a> |
+        <a href="{{ url_for('home') }}">Home</a>
+    </nav>
+{% endblock %}

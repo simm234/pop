@@ -1,17 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Buy Now: {{ item['name'] }}</h1>
+    <h1>Buy Now</h1>
 
-    <p>Description: {{ item['description'] }}</p>
-    <p>Price (Excl. VAT): {{ item['price_excl_vat'] }}</p>
-    <p>Price (Incl. VAT): {{ item['price_incl_vat'] }}</p>
-    <p>Remaining Items: {{ item['remaining_items'] }}</p>
+    <div class="item-details">
+        <h2>{{ item['name'] }}</h2>
+        <p>Price (Excl. VAT): ${{ item['price_excl_vat'] }}</p>
+        <p>Price (Incl. VAT): ${{ item['price_incl_vat'] }}</p>
+        <p>Remaining Items: {{ item['remaining_items'] }}</p>
+    </div>
 
-    <form method="POST" action="{{ url_for('buy_now') }}">
+    <form method="POST" action="{{ url_for('buy_now', item_code=item['code']) }}">
         <label for="quantity">Quantity:</label>
         <input type="number" name="quantity" id="quantity" value="1" min="1" max="{{ item['remaining_items'] }}">
-        <button type="submit" name="selected_item" value="{{ item['code'] }}">Buy</button>
+        <button type="submit">Buy Now</button>
     </form>
 
+    <nav>
+        <a href="{{ url_for('view_stock') }}">View Stock</a> |
+        <a href="{{ url_for('home') }}">Home</a>
+    </nav>
 {% endblock %}

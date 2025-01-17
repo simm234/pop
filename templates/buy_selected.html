@@ -8,8 +8,8 @@
             {% for item in accessories %}
                 <li>
                     <h2>{{ item['name'] }}</h2>
-                    <p>Price (Excl. VAT): {{ item['price_excl_vat'] }}</p>
-                    <p>Price (Incl. VAT): {{ item['price_incl_vat'] }}</p>
+                    <p>Price (Excl. VAT): ${{ item['price_excl_vat'] }}</p>
+                    <p>Price (Incl. VAT): ${{ item['price_incl_vat'] }}</p>
                     <p>Remaining Items: {{ item['remaining_items'] }}</p>
 
                     <label for="quantity_{{ item['code'] }}">Quantity:</label>
@@ -22,7 +22,10 @@
 
         <button type="submit">Buy Selected Items</button>
     </form>
+{% endblock %}
 
-    <p>Total Price: {{ total_price }}</p>
-
+{% block footer %}
+<footer>
+    <p>&copy; 2025 Your Shop. All rights reserved.</p>
+</footer>
 {% endblock %}

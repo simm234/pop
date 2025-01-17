@@ -3,9 +3,9 @@
         "name": "Car Cover",
         "code": "A001",
         "description": "Protective cover for cars.",
-        "remaining_items": 200,
-        "price_excl_vat": 50.0,
-        "price_incl_vat": 57.5
+        "remaining_items": 196,
+        "price_excl_vat": 30.0,
+        "price_incl_vat": 34.5
     },
     {
         "name": "Seat Covers",
@@ -398,5 +398,13 @@
         "remaining_items": 3,
         "price_excl_vat": 500.0,
         "price_incl_vat": 575.0
+    },
+    {
+        "name": "screw",
+        "code": "A052",
+        "description": "sdj",
+        "remaining_items": 23,
+        "price_excl_vat": 2.0,
+        "price_incl_vat": 2.3
     }
 ]
