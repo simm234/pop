@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Update Car Accessory Price</h1>
+<form method="POST" action="{{ url_for('update_price') }}">
+    <label for="code">Enter the Accessory Code:</label><br>
+    <input type="text" id="code" name="code" placeholder="Accessory Code" required><br><br>
+
+    <label for="price_excl_vat">Enter the New Price (Excluding VAT):</label><br>
+    <input type="number" id="price_excl_vat" name="price_excl_vat" placeholder="New Price" required><br><br>
+
+    <button type="submit">Update Price</button>
+</form>
+{% endblock %}

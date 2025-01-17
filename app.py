@@ -3,6 +3,7 @@ import json
 from pop import delete_accessory
 import pop
 import os
+from pop import write_accessories_to_file, read_accessories_from_file
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a strong secret key for session management
@@ -80,22 +81,57 @@ def selled_items():
     if 'user' in session and session['user'] == 'admin':
         return render_template('selled_items.html')
     return redirect(url_for('login'))
-@app.route('/buy_selected', methods=['POST'])
+
+@app.route('/buy_selected', methods=['GET', 'POST'])
 def buy_selected():
+    filename = "pop.txt"
+    if request.method == 'POST':
+        selected_items = request.form.getlist('selected_items')  # List of selected item codes
+        total_price = 0
+        accessories = read_accessories_from_file(filename)
+
+        # Update stock and calculate total price
+        for item in accessories:
+            if isinstance(item, CarAccessory) and item.to_dict()['code'] in selected_items:
+                quantity = int(request.form[f'quantity_{item.to_dict()["code"]}'])
+                total_price += item._CarAccessory__price_incl_vat * quantity
+                item._CarAccessory__remaining_items -= quantity  # Decrease stock
+
+        write_accessories_to_file(filename, accessories)
+
+        return render_template('buy_selected.html', accessories=accessories, total_price=total_price)
+
+    else:
+        # Handle GET request, show items
+        accessories = read_accessories_from_file(filename)
+        return render_template('buy_selected.html', accessories=accessories, total_price=0)
+
+
+@app.route('/sell_selected', methods=['POST'])
+def sell_selected():
     selected_items = request.form.getlist('selected_items')
     quantities = {}
-    
+    total_price = 0
+    filename = "pop.txt" 
     # Loop through selected items and their corresponding quantities
     for item_code in selected_items:
         quantity_key = f"quantity_{item_code}"
         quantity = int(request.form.get(quantity_key, 1))  # Default to 1 if not provided
-        quantities[item_code] = quantity
-    
-    # Now you have the quantities for each selected item
-    # Process the order, calculate total, etc.
-    # Example: print the quantities
-    for item_code, quantity in quantities.items():
-        print(f"Item Code: {item_code}, Quantity: {quantity}")
+
+        # Check if stock is sufficient for selling
+        accessory = next((acc for acc in pop.read_accessories_from_file(filename) if acc.to_dict()['code'] == item_code), None)
+        if accessory and accessory.to_dict()['remaining_items'] > 1 and quantity <= 100:
+            quantities[item_code] = quantity
+            total_price += accessory.to_dict()['price_incl_vat'] * quantity  # Add to total price
+            # Increase the stock (selling means we increase the stock in the system)
+            accessory._CarAccessory__remaining_items += quantity
+
+    # Write the updated accessories list back to the file
+    pop.write_accessories_to_file(filename, pop.read_accessories_from_file(filename))
+
+    # Display the total price and render the confirmation page
+    return render_template('sell_now.html', quantities=quantities, total_price=total_price)
+
     
     # Render the confirmation page or redirect as needed
     return render_template('buy_now.html', quantities=quantities)
@@ -156,27 +192,38 @@ def add_items():
 
 @app.route('/delete_item', methods=['GET', 'POST'])
 def delete_item():
-    print("Rendering delete_item.html")
-    if request.method == 'POST':
-        code = request.form.get('code')
-        print(f"Deleting accessory with code: {code}")
-        delete_accessory(code)  # Call the delete function
-        
-        return redirect(url_for('delete_item'))
-    return render_template('delete_item.html')
-
-
-@app.route('/update_price/<code>', methods=['GET', 'POST'])
-def update_price(code):
     if 'user' in session and session['user'] == 'admin':
         if request.method == 'POST':
+            code = request.form['code']
+            accessories = read_accessories_from_file('pop.txt')
+
+            accessory_exists = any(acc['code'] == code for acc in accessories)
+
+            if accessory_exists:
+                # Filter out the accessory with the given code
+                filtered_accessories = [acc for acc in accessories if acc['code'] != code]
+                write_accessories_to_file('pop.txt', filtered_accessories)
+                flash(f"Accessory with code '{code}' deleted successfully!", "success")
+            else:
+                flash(f"No accessory found with code '{code}'.", "error")
+
+            return redirect(url_for('delete_item'))
+        return render_template('delete_item.html')
+    return redirect(url_for('login'))
+
+@app.route('/update_price', methods=['GET', 'POST'])
+def update_price():
+    if 'user' in session and session['user'] == 'admin':
+        if request.method == 'POST':
+            code = request.form['code']
             new_price = float(request.form['price_excl_vat'])
+            # Call the update function with the provided code and price
             pop.update_price(code, new_price)
             flash("Price updated successfully!", "success")
             return redirect(url_for('view_stock'))
-        accessory = next((acc for acc in pop.read_accessories_from_file() if acc['code'] == code), None)
-        return render_template('update_price.html', accessory=accessory)
+        return render_template('update_price.html')
     return redirect(url_for('login'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
